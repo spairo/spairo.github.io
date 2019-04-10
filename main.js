@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   button.addEventListener('click', async () => {
     let device;
-    let usbDeviceProperties = { name: "pad", vendorId: 32902, productId: 40239 };
+    let usbDeviceProperties = { name: "pad", vendorId: 32903, productId: 2603 };
     try {
       device = await navigator.usb.requestDevice({ filters: usbDeviceProperties });
     } catch (error) {
