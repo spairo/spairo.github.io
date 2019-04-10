@@ -6,13 +6,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   console.log("inside 1");
 
+  const filters = [
+    {vendorId: 32903, productId: 2603},
+    {vendorId: 32902, productId: 40239}
+  ];
+
   let button = document.getElementById('request-device');
 
   button.addEventListener('click', async () => {
+
+    console.log("---inside---");
     let device;
-    let usbDeviceProperties = { name: "pad", vendorId: 32903, productId: 2603 };
+    //let usbDeviceProperties = { name: "pad", vendorId: 32903, productId: 2603 };
+    
     try {
-      device = await navigator.usb.requestDevice({ filters: usbDeviceProperties });
+      device = await navigator.usb.requestDevice({ filters: filters });
     } catch (error) {
       alert('Error: ' + error.message);
     }
