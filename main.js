@@ -1,10 +1,10 @@
-console.log("inside");
+console.log("loaded");
 
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
-  console.log("inside 1");
+  console.log("inside");
 
   const filters = [
     {vendorId: 32903, productId: 2603},
@@ -15,12 +15,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   button.addEventListener('click', async () => {
 
-    console.log("---inside---");
+    console.log("---async---");
     let device;
-    //let usbDeviceProperties = { name: "pad", vendorId: 32903, productId: 2603 };
+    //let usbDeviceProperties = { vendorId: 32903, productId: 2603 };
     
     try {
       device = await navigator.usb.requestDevice({ filters: filters });
+      console.log(device);
     } catch (error) {
       alert('Error: ' + error.message);
     }
