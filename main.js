@@ -22,26 +22,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     try {
       device = await navigator.usb.requestDevice({ filters: filters });
       console.log(device);
-    } catch (error) {
-      alert('Error: ' + error.message);
-    }
-  });
-
-
-});
-
-async function talkToArduino() {
-    console.log("talking");
-    try {
-      console.log("evals");
-
-      let device = await navigator.usb.requestDevice({ filters: [{ vendorId: 0xFF3202 }] });
-
-      console.log(device);
-
+      
+      await device.open();
       await device.open(); // Begin a session.
       await device.selectConfiguration(1); // Select configuration #1 for the device.
-      await device.claimInterface(2); // Request exclusive control over interface #2.
+      await device.claimInterface(2);
       await device.controlTransferOut({
         requestType: 'class',
         recipient: 'interface',
@@ -54,7 +39,14 @@ async function talkToArduino() {
       let result = device.transferIn(5, 64); // Waiting for 64 bytes of data from endpoint #5.
       let decoder = new TextDecoder();
       document.getElementById('target').innerHTML = 'Received: ' + decoder.decode(result.data);
+
+
+
     } catch (error) {
-      document.getElementById('target').innerHTML = error;
+      console.log('Error: ' + error.message);
+      document.getElementById('target').innerHTML = error.message;
     }
-}
+  });
+
+
+});
