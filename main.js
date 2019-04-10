@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   const filters = [
     {vendorId: 32903, productId: 2603},
-    {vendorId: 32902, productId: 40239}
+    {vendorId: 32902, productId: 40239},
+    {vendorId: 0043, productId: '06A8' }
   ];
 
   let button = document.getElementById('request-device');
@@ -22,8 +23,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     try {
       device = await navigator.usb.requestDevice({ filters: filters });
       console.log(device);
-      
-      await device.open();
+  
       await device.open(); // Begin a session.
       await device.selectConfiguration(1); // Select configuration #1 for the device.
       await device.claimInterface(2);
