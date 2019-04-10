@@ -1,7 +1,5 @@
 console.log("loaded");
 
-
-
 document.addEventListener("DOMContentLoaded", function(event) {
 
   console.log("inside");
@@ -10,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     {vendorId: 32903, productId: 2603},
     {vendorId: 32902, productId: 40239},
     {vendorId: 0043, productId: '06A8'},
-    {vendorId:'12A8', productId: '12A8'}
+    {vendorId:'12A8', productId: '12A8'},
+    {vendorId:'0A5C', productId: 5834}
   ];
 
   let button = document.getElementById('request-device');
