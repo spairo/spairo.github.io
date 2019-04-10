@@ -1,13 +1,24 @@
 console.log("inside");
 
+
+
 document.addEventListener("DOMContentLoaded", function(event) {
-  document.getElementById('arduinoButton').addEventListener('click', function () {
-    if (navigator.usb) {
-      talkToArduino();
-    } else {
-      alert('WebUSB not supported.');
+
+  console.log("inside 1");
+
+  let button = document.getElementById('request-device');
+
+  button.addEventListener('click', async () => {
+    let device;
+    let usbDeviceProperties = { name: "pad", vendorId: 32902, productId: 40239 };
+    try {
+      device = await navigator.usb.requestDevice({ filters: usbDeviceProperties });
+    } catch (error) {
+      alert('Error: ' + error.message);
     }
   });
+
+
 });
 
 async function talkToArduino() {
