@@ -5,7 +5,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
   console.log("inside");
 
   const filters = [
-    {productId: 5834}
+    {
+      vendorId: '0A5C',
+      productId: 5834
+    }
   ];
   /*
   const filters = [
