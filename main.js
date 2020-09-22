@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   const filters = [
     {
-      vendorId: 0x079B, productId: 0x0047
+      vendorId: 0x0424, productId: 0x2514
     }
   ];
 
